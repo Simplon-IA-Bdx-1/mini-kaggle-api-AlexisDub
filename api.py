@@ -8,10 +8,11 @@ app = Flask(__name__)
 
 @app.route('/api/test', methods=['POST'])
 def predict():
-    data = request.get_json()
-    df = pd.read_csv('./train2.csv')
+    df = pd.read_csv('./test2.csv')
     df = df['SeriousDlqin2yrs']
-    df['comparaison'] = np.where(df['SeriousDlqin2yrs'] == data['SeriousDlqin2yrs'], 'True', 'False')
+    df2 = pd.read_csv('./test2-predictions.csv')
+    df2 = df2['SeriousDlqin2yrs']
+    df['comparaison'] = np.where(df['SeriousDlqin2yrs'] == df2['SeriousDlqin2yrs'], 'True', 'False')
 
     return jsonify(df.comparaison.value_counts())
 
