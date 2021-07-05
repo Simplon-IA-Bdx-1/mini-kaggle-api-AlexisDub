@@ -1,0 +1,9 @@
+flask
+requests
+flash
+jsonify
+numpy
+pickle
+json
+pandas
+scikit-learn
